@@ -1,0 +1,24 @@
+function dollars=pound_conv(pounds)
+% Function to compare exchange rates between British
+% pounds and US dollars
+% dollars=pound_conv(pounds)
+% Inputs:
+% None
+% Outputs:
+% Displays a conversion table
+% No function output
+
+rate=[];
+while isempty(rate) % Keep asking for input until valid rate
+  srate=input('Enter the pound to dollar conversion rate? ','s');
+  rate=str2num(srate);
+end  
+v=25:25:250;      % Value vector
+p=v/rate*1.03;    % pound exchange with 3% fee
+d=v*rate*1.03;    % dollar exchange with 3% fee
+% Display Table
+fprintf('Dollars to Pounds   Pounds  to Dollars\n');
+A=[v;p;v;d];      % Assemble matrix for table values
+Psym=char(163);   % Get pound character symbol
+fp=['$%-7.2f= ',Psym,'%-7.2f  ',Psym,'%-7.2f= $%-7.2f\n'];
+fprintf(fp,A);
